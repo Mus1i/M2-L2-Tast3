@@ -1,0 +1,52 @@
+.calculator {
+	max-width: 260px;
+	margin: 0 auto;
+	border: 2px solid #8f3125;
+	border-radius: 10px;
+}
+
+.display {
+	height: 50px;
+	text-align: right;
+	padding: 10px;
+	font-size: 24px;
+	border-bottom: 2px solid #8f3125;
+}
+
+.buttonLocation {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+
+.buttonGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 5px;
+}
+
+.buttonGridOperator {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 5px;
+	padding-left: 10px;
+}
+
+button {
+	border-radius: 8px;
+	border: 2px solid transparent;
+	padding: 20px;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	background-color: #1a1a1a;
+	cursor: pointer;
+	transition: border-color 0.15s;
+}
+button:hover {
+	border-color: #8f3125;
+}
+button:active {
+	transition: border-color 0.1s;
+	border-color: #1a1a1a;
+}
