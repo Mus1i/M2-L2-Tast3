@@ -27,12 +27,12 @@
 
 .buttonGridOperator {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: 1fr;
 	gap: 5px;
 	padding-left: 10px;
 }
 
-button {
+.button {
 	border-radius: 8px;
 	border: 2px solid transparent;
 	padding: 20px;
@@ -40,12 +40,19 @@ button {
 	font-weight: 500;
 	font-family: inherit;
 	background-color: #1a1a1a;
+	color: white;
 	cursor: pointer;
 	transition: border-color 0.15s;
 }
+
+.buttonZero {
+	grid-column: span 3;
+}
+
 button:hover {
 	border-color: #8f3125;
 }
+
 button:active {
 	transition: border-color 0.1s;
 	border-color: #1a1a1a;
