@@ -3,7 +3,7 @@ import styles from './App.module.css';
 
 function App() {
 	const NUMS = [7, 8, 9, 4, 5, 6, 1, 2, 3];
-	const OPERATORS = ['+', '-', 'C'];
+	const OPERATORS = ['+', '-', '=', 'C'];
 
 	const [display, setDisplay] = useState('');
 	const [prevNumber, setPrevNumber] = useState('');
@@ -14,15 +14,20 @@ function App() {
 			setDisplay('');
 			setPrevNumber('');
 			setOperator('');
-		} else if (NUMS.includes(value)) {
+		} else if (!isNaN(value)) {
 			setDisplay((prev) => prev + value);
 		} else if (OPERATORS.includes(value)) {
-			if (prevNumber !== '' && display !== '') {
+			if (value === '=') {
 				handleCalculation();
+			} else {
+				if (prevNumber !== '' && display !== '') {
+					handleCalculation();
+				}
+
+				setPrevNumber(display);
+				setOperator(value);
+				setDisplay('');
 			}
-			setPrevNumber(display);
-			setOperator(value);
-			setDisplay('');
 		}
 	};
 
@@ -40,10 +45,10 @@ function App() {
 					result = num1 - num2;
 					break;
 				default:
-					result = 0;
+					return;
 			}
 			setDisplay(result.toString());
-			setPrevNumber('');
+			setPrevNumber(result.toString());
 			setOperator('');
 		}
 	};
@@ -58,6 +63,12 @@ function App() {
 							{num}
 						</button>
 					))}
+					<button
+						className={`${styles.button} ${styles.buttonZero}`}
+						onClick={() => handleButtonClick(0)}
+					>
+						0
+					</button>
 				</div>
 				<div className={styles.buttonGridOperator}>
 					{OPERATORS.map((op) => (
